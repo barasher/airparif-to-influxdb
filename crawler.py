@@ -30,10 +30,14 @@ def main():
     now = datetime.now().replace(hour=12, minute=0, second=0)
     ts = int(datetime.timestamp(now))*(10**9)
     for curInsee in data:
-        print('airparif,location={} indice={} {}'.format(
+        print('airparif,location={},type=real indice={} {}'.format(
             curInsee['ninsee'],
             curInsee['jour']['indice'],
             ts))
+        print('airparif,location={},type=forecast indice={} {}'.format(
+            curInsee['ninsee'],
+            curInsee['demain']['indice'],
+            ts+24*3600*(10**9)))
 
     return RET_CODE_OK
 
